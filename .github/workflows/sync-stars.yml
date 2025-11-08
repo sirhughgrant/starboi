@@ -35,13 +35,13 @@ jobs:
           MAX_PER_RUN = int(os.environ.get("MAX_PER_RUN", "100"))
           DRY_RUN = os.environ.get("DRY_RUN", "true").lower() == "true"
 
-          S = requests.Session()
-          S.headers.update({
-              "Accept": "application/vnd.github+json",
-              "Authorization": f"Bearer {TOKEN}",
-              "X-GitHub-Api-Version": "2022-11-28",
-              "User-Agent": "star-sync-action"
-          })
+    # Assuming TOKEN is a variable, e.g., TOKEN = "your_api_key"
+
+S = requests.Session()
+S.headers.update({
+    "Accept": "application/vnd.github.v3+json",   # <-- 1. ADDED COMMA
+    "Authorization": f"Bearer {TOKEN}"            # <-- 2. CORRECT F-STRING
+})
 
           API = "https://api.github.com"
 
